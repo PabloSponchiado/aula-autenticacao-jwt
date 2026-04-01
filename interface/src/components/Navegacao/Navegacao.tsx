@@ -6,13 +6,15 @@ import AuthRequests from '../../fetch/AuthRequest';
 import { useState } from 'react';
 
 function Navegacao() {
-
-      const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
         const isAuth = localStorage.getItem('isAuth');
         const token = localStorage.getItem('token');
         return !!(isAuth && token && AuthRequests.checkTokenExpiry());
     });
 
+    const [username] = useState(() => {
+        return localStorage.getItem('username') ?? '';
+    });
 
     const estiloNavbar = {
         backgroundColor: 'var(--primaryColor)',
@@ -24,11 +26,12 @@ function Navegacao() {
 
     const logout = () => {
         AuthRequests.removeToken();
+        setIsAuthenticated(false);
     }
 
-return (
+    return (
         <>
-           <Navbar style={estiloNavbar}>
+            <Navbar style={estiloNavbar}>
                 <Container>
                     <Navbar.Brand href="/" style={estiloNavOptions}>Home</Navbar.Brand>
 
@@ -38,6 +41,7 @@ return (
                                 <Nav.Link href="/pessoas" style={estiloNavOptions}>Pessoas</Nav.Link>
                             </Nav>
 
+                            <p style={{ color: 'white', margin: '0 1rem 0 0' }}>Olá, {username}</p>
                             <Button onClick={logout} variant='light'>Sair</Button>
                         </>
                     ) : (

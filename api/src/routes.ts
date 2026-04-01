@@ -6,11 +6,7 @@ const router = express.Router();
 
 router.get('/', (req: Request, res: Response) => { res.send('Hello World!') });
 
-router.get('/api/protegido/pessoas', 
-    Auth.verifyToken, 
-    (req: Request, res: Response) => 
-        { res.send('Rota protegida, se você está vendo essa mensagem é porque está autenticado no sistema') });
-
+router.get('/api/pessoas', Auth.verifyToken, PessoaController.todos);
 
 router.post('/api/login', Auth.validacaoUsuario);
 
