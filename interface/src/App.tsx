@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import PHome from './pages/PHome/PHome'
 import PPessoa from './pages/PPessoas/PPessoas'
+import PLogin from './pages/PLogin/PLogin'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path='/' element={<PHome/>}/>
           <Route path='/pessoas' element={<PPessoa/>}/>
+          <Route path='/login' element={<PLogin />}/>
         </Routes>
       </BrowserRouter>
     </>

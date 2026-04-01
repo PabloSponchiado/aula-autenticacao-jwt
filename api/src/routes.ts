@@ -11,7 +11,6 @@ router.get('/api/protegido/pessoas',
     (req: Request, res: Response) => 
         { res.send('Rota protegida, se você está vendo essa mensagem é porque está autenticado no sistema') });
 
-router.get('/api/pessoas', PessoaController.todos);
 
 router.post('/api/login', Auth.validacaoUsuario);
 

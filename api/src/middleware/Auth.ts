@@ -85,7 +85,7 @@ export class Auth {
         // email: email do professor no banco de dados
         // SECRET: palavra secreta
         // expiresIn: tempo até a expiração do token (neste exemplo, 1 hora)
-        return jwt.sign({ id, nome, username, role }, SECRET, { expiresIn: '1h' });
+        return jwt.sign({ id, nome, username, role }, SECRET, { expiresIn: '3h' });
     }
 
     /**
